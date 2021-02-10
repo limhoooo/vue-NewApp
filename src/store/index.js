@@ -21,7 +21,7 @@ export const store = new Vuex.Store({
             state.ask = ask 
         },
         SET_JOBS(state, jobs){
-            state.jobs = jobs 
+            state.jobs = jobs
         },
     },
     // 비동기 로직 
@@ -36,9 +36,9 @@ export const store = new Vuex.Store({
                 .then(response => context.commit('SET_ASK',response.data))
                 .catch()
         },
-        FETCH_JOBS(context){
+        FETCH_JOBS({commit}){
             fetchJobsList()
-                .then(response => context.commit('SET_JOBS',response.data))
+                .then(({data}) => commit('SET_JOBS',data))
                 .catch()
         }
     },
