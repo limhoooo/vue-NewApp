@@ -1,8 +1,12 @@
 <template>
   <div>
-      <div v-for="ask in GET_ASK" v-bind:key="ask.id">
-        {{ ask.title }}
-      </div>
+      <p v-for="ask in GET_ASK" v-bind:key="ask.id">
+        <router-link :to="`/item/${ask.id}`">
+          {{ ask.title }}
+        </router-link>
+        <small>{{ ask.time_age }} by {{ ask.user }}</small>
+      </p>
+
   </div>
 </template>
 
