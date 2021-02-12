@@ -1,8 +1,23 @@
 <template>
   <div>
-      <p>{{ askInfo.title }}</p>
-      <p>{{ askInfo.id }}</p>
-      <p>{{ askInfo.content }}</p>
+    <section>
+      <div>
+        user
+      </div>
+      <div>
+        <router-link :to="`/user/${askInfo.user}`">
+        {{ askInfo.user }}
+        </router-link>
+        <div>
+          {{askInfo.time_ago}}
+        </div>
+      </div>
+      <h2>{{ askInfo.title }}</h2>
+    </section>
+    <section>
+      <div v-html="askInfo.content"></div>
+      
+    </section>
   </div>
 </template>
 

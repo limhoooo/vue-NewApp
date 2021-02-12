@@ -18,7 +18,7 @@ export default {
       userlist: state => state.user
     })
   },
-  beforeCreate(){
+  created(){
     const userName = this.$route.params.id;
     this.$store.dispatch('FETCH_USER',userName);
   }
