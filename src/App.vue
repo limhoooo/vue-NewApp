@@ -1,9 +1,7 @@
 <template>
   <div id="app">
     <tool-Bar></tool-Bar>
-    <transition name="fade">
       <router-view></router-view>
-    </transition>
     <spinner :loading="loadingStatus"></spinner>
   </div>
 </template>

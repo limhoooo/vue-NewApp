@@ -12,17 +12,20 @@ export default {
   components: {
     ListItem
   },
-  created(){
-        
-    bus.$emit('start:spinner');
-      setTimeout(()=>{
-        this.$store.dispatch('FETCH_JOBS')
-        .then( ()=> {
-          bus.$emit('end:spinner');
-        })
-        .catch();
-      },3000)
+  mounted() {
+    bus.$emit('end:spinner')
   }
+  // created(){
+        
+  //   bus.$emit('start:spinner');
+  //     setTimeout(()=>{
+  //       this.$store.dispatch('FETCH_JOBS')
+  //       .then( ()=> {
+  //         bus.$emit('end:spinner');
+  //       })
+  //       .catch();
+  //     },3000)
+  // }
 }
 </script>
 

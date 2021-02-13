@@ -10,13 +10,13 @@ export default function createListView (name){
             console.log(this.name);
             console.log(this.$route.name);
             bus.$emit('start:spinner');
-            setTimeout(()=>{
+            // setTimeout(()=>{
                 this.$store.dispatch('FETCH_LIST',this.$route.name)
                 .then( ()=> {
                 bus.$emit('end:spinner');
                 })
                 .catch();
-            },2000) 
+            // },2000) 
         },
         render(createElement){
             return createElement(ListView);

@@ -5,12 +5,12 @@ export default {
     created(){
         console.log(this.$route.name);
         bus.$emit('start:spinner');
-        setTimeout(()=>{
+        //setTimeout(()=>{
             this.$store.dispatch('FETCH_LIST',this.$route.name)
             .then( ()=> {
             bus.$emit('end:spinner');
           })
           .catch();
-        },3000)
+        //},2000)
     }
 }

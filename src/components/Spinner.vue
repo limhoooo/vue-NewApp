@@ -1,4 +1,5 @@
 <template>
+    
   <div class="lds-facebook" v-if="loading">
     <div>
     </div>
