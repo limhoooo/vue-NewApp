@@ -1,26 +1,27 @@
 <template>
   <div>
-      <p v-for="ask in GET_ASK" v-bind:key="ask.id">
-        <router-link :to="`/item/${ask.id}`">
-          {{ ask.title }}
-        </router-link>
-        <small>{{ ask.time_age }} by {{ ask.user }}</small>
-      </p>
-
+    <list-item></list-item>
   </div>
 </template>
 
 <script>
-import { mapGetters } from 'vuex'
+import ListItem from '../components/ListItem.vue'
+import bus from '../utils/bus.js'
 
 export default {
-  computed: {
-    ...mapGetters({
-      GET_ASK : 'GET_ASK'
-    })
+  components: {
+    ListItem
   },
   created(){
-    this.$store.dispatch('FETCH_ASK');
+        
+      bus.$emit('start:spinner');
+      setTimeout(()=>{
+        this.$store.dispatch('FETCH_ASK')
+        .then( ()=> {
+          bus.$emit('end:spinner');
+        })
+        .catch();
+      },3000)        
   }
 }
 </script>

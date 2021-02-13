@@ -13,5 +13,9 @@ export default {
     },
     SET_ITEM(state, item){
         state.item = item
-    }
+    },
+    SET_LEST(state, list){
+        state.list = list
+    },
+    
 }
