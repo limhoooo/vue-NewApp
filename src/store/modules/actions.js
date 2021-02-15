@@ -20,23 +20,20 @@ export default {
             .then(({data}) => commit('SET_JOBS',data))
             .catch()
     },
-    FETCH_USER({commit},username){
-        return fetchUserInfo(username)
-        .then(({data}) => commit('SET_USER',data,))
-        .catch()
+    async FETCH_USER({commit},username){
+        const resopnse = await fetchUserInfo(username);
+        commit('SET_USER',resopnse.data)
+        return resopnse;
     },
-    FETCH_ITEM({commit},userid){
-        return fetchAskInfo(userid)
-        .then(({data}) => commit(('SET_ITEM'),data))
-        .catch()
+    async FETCH_ITEM({commit},userid){
+        const response = await fetchAskInfo(userid);
+        commit(('SET_ITEM'),response.data);
+        return response;
     },
-    FETCH_LIST({commit},pageName){
-        return fetchList(pageName)
-            .then(response => {
-                commit('SET_LEST',response.data);
-                bus.$emit('end:spinner');
-                return response;
-            })
-            .catch(error => console.log(error))
+    async FETCH_LIST({commit},pageName){
+        const response = await fetchList(pageName);
+        commit('SET_LEST',response.data);
+        bus.$emit('end:spinner');
+        return response;
     }
 };
